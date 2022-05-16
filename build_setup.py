@@ -104,16 +104,19 @@ def main():
             workdir = target.name + '.dir'
             obj_files = []
 
+            definitions = ' '.join(f'-D {definition}' for definition in target.definitions)
+            libraries = ' '.join(f'-l{lib}' for lib in target.system_libraries)
+
             for source in target.sources:
                 obj = f'{workdir}/{source}.o'
                 obj_files.append(obj)
 
                 f.write(f'build {obj}: CXX_COMPILER ../{source}\n')
-                f.write('  ARGS = $SYSTEM_INCLUDE_DIRS -std=c++11\n')
+                f.write(f'  ARGS = $SYSTEM_INCLUDE_DIRS {definitions} -std=c++11\n')
                 f.write('\n')
 
             f.write(f'build {target.executable}: CXX_LINKER {" ".join(obj_files)}\n')
-            f.write(f'  LINK_ARGS = $SYSTEM_LIBRARY_DIRS {" ".join(f"-l{lib}" for lib in target.system_libraries)}\n')
+            f.write(f'  LINK_ARGS = $SYSTEM_LIBRARY_DIRS {libraries}\n')
             f.write('\n')
 
         f.write(f'build all: phony {" ".join(target.executable for target in targets)}\n')
