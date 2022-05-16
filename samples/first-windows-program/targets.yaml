@@ -1,0 +1,9 @@
+targets:
+  - name: LearnWindows
+    system_libraries:
+      - user32
+    sources:
+      - main.cpp
+    compiler_definitions:
+      - "WINVER=0x0603"  # Windows 8.1
+
