@@ -88,18 +88,19 @@ def main():
 
         # C++ compiler
         f.write('rule CXX_COMPILER\n')
-        f.write(f'  command = clang++ --target={triplet} $ARGS -fuse-ld=lld -o $out -c $in\n')
+        f.write(f'  command = clang++ --target={triplet} -fuse-ld=lld $ARGS -o $out -c $in\n')
         f.write('  description = Compiling C++ object $out\n')
         f.write('\n')
 
         # C++ linker
         f.write('rule CXX_LINKER\n')
-        f.write(f'  command = clang++ --target={triplet} $LINK_ARGS -fuse-ld=lld -o $out $in\n')
+        f.write(f'  command = clang++ --target={triplet} -fuse-ld=lld $LINK_ARGS -o $out $in\n')
         f.write('  description = Linking $out\n')
         f.write('\n')
 
         f.write('\n')
 
+        # Targets
         for target in targets:
             workdir = target.name + '.dir'
             obj_files = []
@@ -107,16 +108,21 @@ def main():
             definitions = ' '.join(f'-D {definition}' for definition in target.definitions)
             libraries = ' '.join(f'-l{lib}' for lib in target.system_libraries)
 
+            compiler_args = ' '.join(target.compiler_args)
+            linker_args = ' '.join(target.linker_args)
+
+            # Source files to object files
             for source in target.sources:
                 obj = f'{workdir}/{source}.o'
                 obj_files.append(obj)
 
                 f.write(f'build {obj}: CXX_COMPILER ../{source}\n')
-                f.write(f'  ARGS = $SYSTEM_INCLUDE_DIRS {definitions} -std=c++11\n')
+                f.write(f'  ARGS = $SYSTEM_INCLUDE_DIRS {definitions} {compiler_args} \n')
                 f.write('\n')
 
+            # Object files to executable
             f.write(f'build {target.executable}: CXX_LINKER {" ".join(obj_files)}\n')
-            f.write(f'  LINK_ARGS = $SYSTEM_LIBRARY_DIRS {libraries}\n')
+            f.write(f'  LINK_ARGS = $SYSTEM_LIBRARY_DIRS {libraries} {linker_args}\n')
             f.write('\n')
 
         f.write(f'build all: phony {" ".join(target.executable for target in targets)}\n')
@@ -131,11 +137,14 @@ class TargetDefinition:
         self.system_libraries = data.get('system_libraries', [])
         self.sources = data.get('sources', [])
         self.definitions = data.get('compiler_definitions', [])
+        self.compiler_args = data.get('compiler_args', [])
+        self.linker_args = data.get('linker_args', [])
 
     def __repr__(self):
         return f'TargetDefinition(name={self.name!r}, executable={self.executable!r}, ' \
                f'system_libraries={self.system_libraries!r}, sources={self.sources!r}, ' \
-               f'compiler_definitions={self.definitions!r})'
+               f'compiler_definitions={self.definitions!r}, compiler_args={self.compiler_args!r}, ' \
+               f'linker_args={self.linker_args!r})'
 
 
 if __name__ == '__main__':

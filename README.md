@@ -33,6 +33,8 @@ targets:
       - main.cpp
     compiler_definitions:
       - "WINVER=0x0603"  # Windows 8.1
+    compiler_args:
+      - "-std=c++11"
 ```
 
 In this example:
@@ -40,8 +42,11 @@ In this example:
 - `system_libraries` refers to the system libraries linked through `-l<lib>`
 - `sources` contains all source C++ files to compile
 - `compiler_definitions` contains a list of all compiler definitions
+- `compiler_args` are some extra arguments given to the compiler
 
-Additionally, `executable` can be set to explicitly set the executable name, otherwise it defaults to appending `.exe` to the end of the target.
+Additionally:
+- `executable` can be set to explicitly set the executable name, otherwise it defaults to appending `.exe` to the end of the target
+- `linker_args` can be set to give extra arguments to the linker
 
 ## Combining it all
 
