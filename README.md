@@ -57,3 +57,13 @@ This will change into the build directory and run Ninja while also keeping acces
 
 The following samples exist:
 - ["Your First Windows Program"](samples/first-windows-program): simple 1 source file, 1 executable output.
+
+## Why all this effort?
+Good question!
+
+I tried using CMake at first to cross-compile, however I had mixed success as it would kind of work on CMake 3.18, but required me running cmake a 2nd time before being able to actually compile and CMake appending the appropriate extensions to its targets.
+On higher versions of CMake I couldn't get it to compile at all.
+
+I also attempted Meson, and while this worked fine enough, I got annoyed at the fact that its documentation is not easy to go through, and that there's seemingly no way to disable some default compiler and linker arguments from being passed. As well as the requirement to tell the linker specifically what subsystem to compile for even though it can figure this out on its own as well.
+
+So, knowing the required arguments to give to the compiler and linker, and having a good enough idea of Ninja, I just decided to write my own thing for my very niche use case rather than giving myself a headache over trying to get build systems to conform to my requirements.
