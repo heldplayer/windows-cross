@@ -1,9 +1,10 @@
 targets:
-  - name: LearnWindows
+  - name: OpenFile
     system_libraries:
       - user32
+      - ole32
     sources:
-      - main.cpp
+      - open-file.cpp
     compiler_definitions:
       - "WINVER=0x0603"  # Windows 8.1
     compiler_args:

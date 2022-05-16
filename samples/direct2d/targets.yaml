@@ -1,5 +1,5 @@
 targets:
-  - name: LearnWindows
+  - name: Clock
     system_libraries:
       - user32
     sources:

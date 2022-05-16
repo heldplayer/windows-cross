@@ -18,6 +18,10 @@ TARGET_TRIPLETS = {
     'x86_64': 'x86_64-pc-windows-msvc',
     'armv7': 'armv7-pc-windows-msvc',
 }
+EXTRA_DEFINITIONS = {
+    'x86_64': [],
+    'armv7': ['_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE'],
+}
 INCLUDE_DIRS = {
     'x86_64': ['/xwin/crt/include', '/xwin/sdk/include/shared', '/xwin/sdk/include/ucrt', '/xwin/sdk/include/um'],
     'armv7': ['/xwin/crt/include', '/xwin/sdk/include/shared', '/xwin/sdk/include/ucrt', '/xwin/sdk/include/um'],
@@ -46,6 +50,7 @@ def main():
     targets_file = arguments.targets
     architecture = arguments.architecture
     triplet = TARGET_TRIPLETS[architecture]
+    extra_definitions = EXTRA_DEFINITIONS[architecture]
     include_dirs = INCLUDE_DIRS[architecture]
     library_dirs = LIBRARY_DIRS[architecture]
 
@@ -105,7 +110,7 @@ def main():
             workdir = target.name + '.dir'
             obj_files = []
 
-            definitions = ' '.join(f'-D {definition}' for definition in target.definitions)
+            definitions = ' '.join(f'-D {definition}' for definition in extra_definitions + target.definitions)
             libraries = ' '.join(f'-l{lib}' for lib in target.system_libraries)
 
             compiler_args = ' '.join(target.compiler_args)
