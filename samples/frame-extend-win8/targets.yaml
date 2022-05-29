@@ -1,0 +1,14 @@
+targets:
+  - name: FrameExtend
+    system_libraries:
+      - user32
+      - gdi32
+      - dwmapi
+      - uxtheme
+    sources:
+      - main.cpp
+    compiler_definitions:
+      - "WINVER=0x0603"  # Windows 8.1
+    compiler_args:
+      - "-std=c++11"
+
