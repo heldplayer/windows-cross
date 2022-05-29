@@ -7,6 +7,7 @@ targets:
       - open-file.cpp
     compiler_definitions:
       - "WINVER=0x0603"  # Windows 8.1
+      - "UNICODE"
     compiler_args:
       - "-std=c++11"
 
