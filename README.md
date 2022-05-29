@@ -38,6 +38,21 @@ I've then configured the `.devcontainer/devcontainer.json` file in this reposito
 
 With that, if I open the repository in VSCode, I'll be prompted to reopen in a container, or if I dismiss that I can do so at a later point by clicking the "Open a Remote Window" button on the bottom left and selecting "Reopen in Container".
 
+However, this is for local development. If you want to make use of this yourself, you could make a `devcontainer.json` file yourself like this:
+```json
+{
+    "name": "Windows cross-compiling Environment",
+    "image": "ghcr.io/heldplayer/windows-cross:main",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools"
+            ]
+        }
+    }
+}
+```
+
 ## Generating Ninja build directory
 
 The `xcross-setup` script sets up a ninja build directory to be run in the Docker container.
