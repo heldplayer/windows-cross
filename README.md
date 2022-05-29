@@ -61,7 +61,10 @@ This will change into the build directory and run Ninja while also keeping acces
 ## Samples
 
 The following samples exist:
-- ["Your First Windows Program"](samples/first-windows-program): simple 1 source file, 1 executable output.
+- ["Your First Windows Program"](samples/first-windows-program): Simplest functioning Win32 app.
+- ["COM Interface"](samples/com-interface): Folder containing COM Interface samples (only 1 currently).
+- ["Direct2D"](samples/direct2d): Sample containing Direct2D rendering code.
+- ["Frame Extension"](samples/frame-extend): Sample that extends the client area into the window frame.
 
 ## Why all this effort?
 Good question!
