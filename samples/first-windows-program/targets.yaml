@@ -9,4 +9,3 @@ targets:
       - "UNICODE"
     compiler_args:
       - "-std=c++11"
-

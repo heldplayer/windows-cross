@@ -34,7 +34,7 @@ LIBRARY_DIRS = {
 
 def main():
     # fmt: off
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog="xcross-setup")
     parser.add_argument("build_dir", metavar="builddir",
                         help="the target directory to build in.")
     parser.add_argument("targets", metavar="targets.yaml", nargs="?", default="targets.yaml",

@@ -1,0 +1,25 @@
+{
+    "name": "Windows cross-compiling Environment",
+    "build": {
+        "dockerfile": "../Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-python.python"
+            ],
+            "settings": {
+                "python.formatting.provider": "black",
+                "python.formatting.blackArgs": [
+                    "--line-length",
+                    "119"
+                ],
+                "editor.rulers": [
+                    120
+                ],
+                "explorer.autoReveal": false
+            }
+        }
+    }
+}
