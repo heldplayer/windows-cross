@@ -138,7 +138,7 @@ def main():
 
 class TargetDefinition:
     def __init__(self, data):
-        print(data)
+        # print(data)
         self.name = data["name"]
         self.executable = data.get("executable", self.name + ".exe")
         self.system_libraries = data.get("system_libraries", [])
