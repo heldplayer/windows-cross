@@ -1,5 +1,6 @@
 targets:
   - name: OpenFile
+    type: executable
     system_libraries:
       - user32
       - ole32

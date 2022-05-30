@@ -1,5 +1,6 @@
 targets:
   - name: LearnWindows
+    type: executable
     system_libraries:
       - user32
     sources:

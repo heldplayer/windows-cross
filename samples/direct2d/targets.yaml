@@ -1,5 +1,6 @@
 targets:
   - name: Clock
+    type: executable
     system_libraries:
       - user32
     sources:

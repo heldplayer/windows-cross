@@ -17,9 +17,11 @@
                 ],
                 "editor.rulers": [
                     120
-                ],
-                "explorer.autoReveal": false
+                ]
             }
         }
-    }
+    },
+    "mounts": [
+        "source=${localWorkspaceFolder}/xcross,target=/xcross,type=bind"
+    ]
 }

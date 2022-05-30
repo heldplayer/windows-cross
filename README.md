@@ -2,6 +2,19 @@
 
 Repository containing tools and a Docker image for cross-compiling Windows apps from Linux using LLVM.
 
+## Goals
+
+[x] Compile executables for Windows from Linux (Samples!)
+[x] Have a build environment that doesn't require juggling docker commands (Remote Containers!)
+[ ] Compile static and shared libraries
+[ ] Generate configuration files for the VSCode [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+[ ] Generate build tasks for VSCode
+[ ] Dependencies between targets
+[ ] Loading targets from other files
+[ ] Automatic regeneration of build file on changes
+
+The real end goal is to be able to compile Chromium for `armv7` (Surface RT) to breathe in some new life to this device that's been completely abandoned by its creators.
+
 ## Setup
 
 The suggested usage is to use the Docker image to build programs.
@@ -83,6 +96,7 @@ The following is an example taken from the ["Your First Windows Program"](sample
 ```yaml
 targets:
   - name: LearnWindows
+    type: executable
     system_libraries:
       - user32
     sources:
@@ -96,13 +110,14 @@ targets:
 
 In this example:
 - `name` is the target name
+- `type` is the target type, it can be `executable`, `shared library`, or `static library`
 - `system_libraries` refers to the system libraries linked through `-l<lib>`
 - `sources` contains all source C++ files to compile
 - `compiler_definitions` contains a list of all compiler definitions
 - `compiler_args` are some extra arguments given to the compiler
 
 Additionally:
-- `executable` can be set to explicitly set the executable name, otherwise it defaults to appending `.exe` to the end of the target
+- `executable_file` can be set to explicitly set the executable name, otherwise it defaults to appending `.exe` to the end of the target
 - `linker_args` can be set to give extra arguments to the linker
 
 ## Samples
