@@ -15,6 +15,8 @@ Repository containing tools and a Docker image for cross-compiling Windows apps 
 
 The real end goal is to be able to compile Chromium for `armv7` (Surface RT) to breathe in some new life to this device that's been completely abandoned by its creators.
 
+Currently however, this is being blocked by an incomplete implementation of clang for targetting ARMv7 Win32 applications. ([see here](https://github.com/llvm/llvm-project/issues/37689))
+
 ## Setup
 
 The suggested usage is to use the Docker image to build programs.
