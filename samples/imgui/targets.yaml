@@ -1,0 +1,22 @@
+targets:
+  - name: imgui-demo
+    type: executable
+    system_libraries:
+      - user32
+      - d3d9
+    sources:
+      - main.cpp
+      - imgui_demo.cpp
+      - imgui_draw.cpp
+      - imgui_impl_win32.cpp
+      - imgui_impl_dx9.cpp
+      - imgui_tables.cpp
+      - imgui_widgets.cpp
+      - imgui.cpp
+    compiler_definitions:
+      - "WINVER=0x0603"  # Windows 8.1
+      # - "_CRT_USE_BUILTIN_OFFSETOF"
+      #- "IMGUI_DISABLE_SSE"  # Was an issue before, but suddenly not anymore?
+    compiler_args:
+      - "-std=c++11"
+      - "-fno-exceptions"  # https://github.com/llvm/llvm-project/issues/37689

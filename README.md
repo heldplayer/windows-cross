@@ -127,6 +127,7 @@ The following samples exist:
 - ["COM Interface"](samples/com-interface): Folder containing COM Interface samples (only 1 currently).
 - ["Direct2D"](samples/direct2d): Sample containing Direct2D rendering code.
 - ["Frame Extension"](samples/frame-extend): Sample that extends the client area into the window frame.
+- ["Dear ImGui"](samples/imgui): Sample that compiles [Dear ImGui](https://github.com/ocornut/imgui).
 
 ## Why all this effort?
 Good question!
