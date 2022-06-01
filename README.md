@@ -4,14 +4,14 @@ Repository containing tools and a Docker image for cross-compiling Windows apps 
 
 ## Goals
 
-[x] Compile executables for Windows from Linux (Samples!)
-[x] Have a build environment that doesn't require juggling docker commands (Remote Containers!)
-[ ] Compile static and shared libraries
-[ ] Generate configuration files for the VSCode [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
-[ ] Generate build tasks for VSCode
-[ ] Dependencies between targets
-[ ] Loading targets from other files
-[ ] Automatic regeneration of build file on changes
+- [x] Compile executables for Windows from Linux (Samples!)
+- [x] Have a build environment that doesn't require juggling docker commands (Remote Containers!)
+- [ ] Compile static and shared libraries
+- [ ] Generate configuration files for the VSCode [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+- [ ] Generate build tasks for VSCode
+- [ ] Dependencies between targets
+- [ ] Loading targets from other files
+- [ ] Automatic regeneration of build file on changes
 
 The real end goal is to be able to compile Chromium for `armv7` (Surface RT) to breathe in some new life to this device that's been completely abandoned by its creators.
 
