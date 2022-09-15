@@ -15,7 +15,7 @@ class LinkerCpp(LinkerBase):
     def get_rule_contents(cls, architecture: Architecture):
         return "\n".join(
             [
-                f"  command = clang++ --target={architecture.triplet} -fuse-ld=lld $LINK_ARGS -o $out $in",
+                f"  command = clang++-15 --target={architecture.triplet} -fuse-ld=lld $LINK_ARGS -o $out $in",
                 "  description = Linking $out",
             ]
         )
@@ -26,7 +26,7 @@ class LinkerC(LinkerBase):
     def get_rule_contents(cls, architecture: Architecture):
         return "\n".join(
             [
-                f"  command = clang --target={architecture.triplet} -fuse-ld=lld $LINK_ARGS -o $out $in",
+                f"  command = clang-15 --target={architecture.triplet} -fuse-ld=lld $LINK_ARGS -o $out $in",
                 "  description = Linking $out",
             ]
         )

@@ -15,7 +15,7 @@ class CompilerCpp(CompilerBase):
     def get_rule_contents(cls, architecture: Architecture):
         return "\n".join(
             [
-                f"  command = clang++ --target={architecture.triplet} -fuse-ld=lld $ARGS -o $out -c $in",
+                f"  command = clang++-15 --target={architecture.triplet} -fuse-ld=lld $ARGS -o $out -c $in",
                 "  description = Compiling C++ object $out",
             ]
         )
@@ -26,7 +26,7 @@ class CompilerC(CompilerBase):
     def get_rule_contents(cls, architecture: Architecture):
         return "\n".join(
             [
-                f"  command = clang --target={architecture.triplet} -fuse-ld=lld $ARGS -o $out -c $in",
+                f"  command = clang-15 --target={architecture.triplet} -fuse-ld=lld $ARGS -o $out -c $in",
                 "  description = Compiling C object $out",
             ]
         )
